@@ -15,7 +15,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"template-mod" {
+		"hotbar_layout_editor" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
@@ -34,6 +34,10 @@ dependencies {
 processResources {
 	def version = project.version
 	inputs.property "version", version
+	from("assets") {
+		into "assets"
+	}
+	exclude "assets/template-mod/**", "template-mod*.json"
 
 	filesMatching("fabric.mod.json") {
 		expand "version": version
