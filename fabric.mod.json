@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "id": "hotbar_layout_editor",
   "version": "${version}",
-  "name": "Hotbar Layout Editor",
+  "name": "Hotbar Ediitor",
   "description": "Customize your Minecraft hotbar layout directly in game. Move each slot individually, move the whole hotbar as a group, hide GUI slots visually, and reposition the offhand slot.",
   "authors": [
-    "tpcoffline"
+    "§kworries"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/hotbar-layout-editor"
