@@ -45,6 +45,25 @@ public class HotbarLayoutData {
 			slot.x = 0;
 			slot.y = 0;
 			slot.visible = true;
+			slot.scale = 1.0F;
+		}
+	}
+
+	public void normalize() {
+		if (this.slots == null) {
+			this.slots = new SlotData[9];
+		}
+		for (int i = 0; i < this.slots.length && i < 9; ++i) {
+			if (this.slots[i] == null) this.slots[i] = new SlotData();
+			this.slots[i].normalizeScale();
+		}
+		if (this.slots.length != 9) {
+			SlotData[] normalizedSlots = new SlotData[9];
+			System.arraycopy(this.slots, 0, normalizedSlots, 0, Math.min(this.slots.length, 9));
+			for (int i = 0; i < normalizedSlots.length; ++i) {
+				if (normalizedSlots[i] == null) normalizedSlots[i] = new SlotData();
+			}
+			this.slots = normalizedSlots;
 		}
 	}
 
@@ -60,6 +79,7 @@ public class HotbarLayoutData {
 			copy.slots[i].x = this.slots[i].x;
 			copy.slots[i].y = this.slots[i].y;
 			copy.slots[i].visible = this.slots[i].visible;
+			copy.slots[i].scale = this.slots[i].scale;
 		}
 		return copy;
 	}
@@ -68,5 +88,18 @@ public class HotbarLayoutData {
 		public int x = 0;
 		public int y = 0;
 		public boolean visible = true;
+		public float scale = 1.0F;
+
+		public void setScale(float scale) {
+			if (Float.isFinite(scale)) this.scale = Math.max(0.10F, Math.min(10.0F, scale));
+		}
+
+		private void normalizeScale() {
+			if (!Float.isFinite(this.scale) || this.scale < 0.10F) {
+				this.scale = 1.0F;
+			} else if (this.scale > 10.0F) {
+				this.scale = 10.0F;
+			}
+		}
 	}
 }

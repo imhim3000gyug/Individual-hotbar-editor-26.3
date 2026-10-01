@@ -23,6 +23,7 @@ public class HotbarConfig {
 
 	public void setData(HotbarLayoutData data) {
 		this.data = data != null ? data : new HotbarLayoutData();
+		this.data.normalize();
 	}
 
 	public void load() {
@@ -36,6 +37,7 @@ public class HotbarConfig {
 			HotbarLayoutData loaded = GSON.fromJson(json, HotbarLayoutData.class);
 			if (loaded != null) {
 				this.data = loaded;
+				this.data.normalize();
 			} else {
 				System.err.println("[HotbarLayoutEditor] Config file was empty, using defaults.");
 				this.data = new HotbarLayoutData();

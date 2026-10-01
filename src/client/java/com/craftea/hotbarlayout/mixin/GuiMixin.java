@@ -26,22 +26,37 @@ public class GuiMixin {
 		String path = sprite.getPath();
 		if (path.equals("hud/hotbar")) {
 			for (int i = 0; i < 9; ++i) {
-				if (!data.getSlots()[i].visible) continue;
-				int offsetX = data.getX() + data.getSlots()[i].x;
-				int offsetY = data.getY() + data.getSlots()[i].y;
+				HotbarLayoutData.SlotData slot = data.getSlots()[i];
+				if (!slot.visible) continue;
+				int offsetX = data.getX() + slot.x;
+				int offsetY = data.getY() + slot.y;
 				int scissorX = x + offsetX + i * 20;
 				if (i == 0) scissorX = x + offsetX;
 				int scissorWidth = i == 0 || i == 8 ? 21 : 20;
+				float scale = slot.scale;
+				float pivotX = scissorX + scissorWidth / 2.0F;
+				float pivotY = y + offsetY + 11.0F;
+				graphics.pose().pushMatrix();
+				graphics.pose().translate(pivotX * (1.0F - scale), pivotY * (1.0F - scale));
+				graphics.pose().scale(scale, scale);
 				graphics.enableScissor(scissorX, y + offsetY, scissorX + scissorWidth, y + offsetY + 22);
 				graphics.blitSprite(pipeline, sprite, x + offsetX, y + offsetY, width, height);
 				graphics.disableScissor();
+				graphics.pose().popMatrix();
 			}
 		} else if (path.equals("hud/hotbar_selection")) {
 			int slot = (x - (graphics.guiWidth() / 2 - 91 - 1)) / 20;
 			if (slot >= 0 && slot <= 8 && data.getSlots()[slot].visible) {
 				int offsetX = data.getX() + data.getSlots()[slot].x;
 				int offsetY = data.getY() + data.getSlots()[slot].y;
+				float scale = data.getSlots()[slot].scale;
+				float pivotX = x + offsetX + width / 2.0F;
+				float pivotY = y + offsetY + height / 2.0F;
+				graphics.pose().pushMatrix();
+				graphics.pose().translate(pivotX * (1.0F - scale), pivotY * (1.0F - scale));
+				graphics.pose().scale(scale, scale);
 				graphics.blitSprite(pipeline, sprite, x + offsetX, y + offsetY, width, height);
+				graphics.pose().popMatrix();
 			}
 		} else if (path.equals("hud/hotbar_offhand_left") || path.equals("hud/hotbar_offhand_right")) {
 			if (data.isOffhandVisible()) {
@@ -78,7 +93,11 @@ public class GuiMixin {
 		if (this.isOffhand) {
 			graphics.pose().translate(data.getX() + data.getOffhandX(), data.getY() + data.getOffhandY());
 		} else if (this.currentSlotIndex != -1) {
-			graphics.pose().translate(data.getX() + data.getSlots()[this.currentSlotIndex].x, data.getY() + data.getSlots()[this.currentSlotIndex].y);
+			HotbarLayoutData.SlotData slot = data.getSlots()[this.currentSlotIndex];
+			float scale = slot.scale;
+			graphics.pose().translate(data.getX() + slot.x + (x + 10.0F) * (1.0F - scale),
+					data.getY() + slot.y + (y + 10.0F) * (1.0F - scale));
+			graphics.pose().scale(scale, scale);
 		}
 	}
 

@@ -16,6 +16,9 @@
   "entrypoints": {
     "client": [
       "com.craftea.hotbarlayout.HotbarLayoutMod"
+    ],
+    "modmenu": [
+      "com.craftea.hotbarlayout.ModMenuIntegration"
     ]
   },
   "mixins": [

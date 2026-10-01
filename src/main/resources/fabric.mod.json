@@ -10,7 +10,8 @@
 	"icon": "assets/hotbar_layout_editor/icon.png",
 	"environment": "client",
 	"entrypoints": {
-		"client": ["com.craftea.hotbarlayout.HotbarLayoutMod"]
+		"client": ["com.craftea.hotbarlayout.HotbarLayoutMod"],
+		"modmenu": ["com.craftea.hotbarlayout.ModMenuIntegration"]
 	},
 	"mixins": ["hotbar_layout_editor.mixins.json"],
 	"depends": {
