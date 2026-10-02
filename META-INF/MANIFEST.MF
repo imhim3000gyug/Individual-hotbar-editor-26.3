@@ -1,11 +1,18 @@
 Manifest-Version: 1.0
+Fabric-Loom-Client-Only-Entries: com/craftea/hotbarlayout/mixin/GuiMixin
+ .class;com/craftea/hotbarlayout/HotbarEditorScreen.class;com/craftea/ho
+ tbarlayout/HotbarLayoutData.class;com/craftea/hotbarlayout/HotbarLayout
+ Data$SlotData.class;com/craftea/hotbarlayout/HotbarConfig.class;com/cra
+ ftea/hotbarlayout/HotbarLayoutMod.class;hotbar_layout_editor.mixins.jso
+ n
+Fabric-Loom-Split-Environment: true
 Fabric-Mapping-Namespace: official
-Fabric-Gradle-Version: 9.2.0
-Fabric-Loom-Version: 1.15.5
+Fabric-Gradle-Version: 9.7.1
+Fabric-Loom-Version: 1.18.2
 Fabric-Mixin-Compile-Extensions-Version: 0.6.0
-Fabric-Minecraft-Version: 26.1.2
-Fabric-Tiny-Remapper-Version: 0.12.3
-Fabric-Loader-Version: 0.18.4
-Fabric-Mixin-Version: 0.17.0+mixin.0.8.7
+Fabric-Minecraft-Version: 26.3
+Fabric-Tiny-Remapper-Version: 0.14.1
+Fabric-Loader-Version: 0.19.5
+Fabric-Mixin-Version: 0.17.4+mixin.0.8.7
 Fabric-Mixin-Group: net.fabricmc
 

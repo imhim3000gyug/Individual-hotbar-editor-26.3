@@ -9,4 +9,5 @@ pluginManagement {
 	}
 }
 
-rootProject.name = 'hotbar-layout-editor'
+// Should match your modid
+rootProject.name = 'template-mod'

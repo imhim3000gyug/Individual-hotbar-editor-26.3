@@ -1,31 +1,38 @@
 {
 	"schemaVersion": 1,
-	"id": "hotbar_layout_editor",
+	"id": "template-mod",
 	"version": "${version}",
-	"name": "Hotbar Layout Editor",
-	"description": "Customize your Minecraft hotbar layout directly in game. Move each slot individually, move the whole hotbar as a group, hide GUI slots visually, and reposition the offhand slot.",
-	"authors": ["tpcoffline"],
-	"contact": { "homepage": "https://modrinth.com/mod/hotbar-layout-editor" },
-	"license": "MIT",
-	"icon": "assets/hotbar_layout_editor/icon.png",
-	"environment": "client",
-	"entrypoints": {
-		"client": ["com.craftea.hotbarlayout.HotbarLayoutMod"],
-		"modmenu": ["com.craftea.hotbarlayout.ModMenuIntegration"]
+	"name": "Template Mod",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"mixins": ["hotbar_layout_editor.mixins.json"],
+	"license": "CC0-1.0",
+	"icon": "assets/template-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.example.TemplateMod"
+		],
+		"client": [
+			"com.example.client.TemplateModClient"
+		]
+	},
+	"mixins": [
+		"template-mod.mixins.json",
+		{
+			"config": "template-mod.client.mixins.json",
+			"environment": "client"
+		}
+	],
 	"depends": {
 		"fabricloader": ">=0.19.5",
-		"fabric-api": "*",
 		"minecraft": "~26.3",
-		"java": ">=25"
-	},
-	"suggests": { "modmenu": "*" },
-	"custom": {
-		"modmenu": {
-			"links": {
-				"modmenu.modrinth": "https://modrinth.com/mod/hotbar-layout-editor"
-			}
-		}
+		"java": ">=25",
+		"fabric-api": "*"
 	}
 }
